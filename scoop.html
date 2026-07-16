@@ -26,12 +26,18 @@
   .eyebrow{font-size:12px;letter-spacing:0.22em;text-transform:uppercase;font-weight:600;color:var(--dourado);}
   button{font-family:'Poppins',sans-serif;cursor:pointer;}
 
+  .topnav{background:var(--preto);padding:16px 0;position:sticky;top:0;z-index:100;}
+  .topnav .wrap{display:flex;justify-content:space-between;align-items:center;}
+  .brand{font-family:'Fraunces',serif;font-size:19px;color:var(--branco);}
+  .brand b{font-weight:600;}
+  .nav-links{display:flex;gap:28px;align-items:center;}
+  .nav-links a{font-size:13.5px;font-weight:500;color:rgba(255,255,255,0.75);transition:color .2s;}
+  .nav-links a:hover,.nav-links a.active{color:var(--bege);}
+  .nav-ig{font-size:12px;font-weight:500;border:1px solid rgba(255,255,255,0.4);padding:6px 14px;border-radius:100px;color:rgba(255,255,255,0.8);transition:all .2s;}
+  .nav-ig:hover{border-color:var(--bege);color:var(--bege);}
+
   .hero{background:var(--preto);color:var(--branco);position:relative;padding:56px 0 84px;overflow:hidden;text-align:center;}
   .hero::before{content:"";position:absolute;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle, rgba(195,165,135,0.2), transparent 70%);top:-280px;left:50%;transform:translateX(-50%);}
-  .nav{display:flex;justify-content:space-between;align-items:center;padding-bottom:44px;position:relative;z-index:2;flex-wrap:wrap;gap:12px;}
-  .brand{font-family:'Fraunces',serif;font-size:19px;}
-  .brand b{font-weight:600;}
-  .nav a.ig{font-size:13px;font-weight:500;border:1px solid rgba(255,255,255,0.5);padding:7px 15px;border-radius:100px;}
   .hero-content{position:relative;z-index:2;max-width:660px;margin:0 auto;}
   .launch-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(195,165,135,0.18);border:1px solid rgba(195,165,135,0.4);padding:8px 18px;border-radius:100px;font-size:12.5px;font-weight:500;color:var(--bege);margin-bottom:22px;}
   .launch-pill .dot{width:6px;height:6px;border-radius:50%;background:var(--bege);animation:pulse 1.6s infinite;}
@@ -128,15 +134,20 @@
 </head>
 <body>
 
+<div class="topnav">
+  <div class="wrap">
+    <div class="brand"><b>quer</b> brilhar ✦</div>
+    <div class="nav-links">
+      <a href="index.html">Início</a>
+      <a href="index.html#produtos" class="active">Produtos</a>
+      <a href="index.html#contato">Contato</a>
+      <a class="nav-ig" href="https://www.instagram.com/querbrilhar_oficial/" target="_blank">@querbrilhar_oficial</a>
+    </div>
+  </div>
+</div>
+
 <div class="hero">
   <div class="wrap">
-    <div class="nav">
-      <div class="brand"><b>quer</b> brilhar ✦</div>
-      <div style="display:flex;gap:10px;align-items:center;">
-        <a class="ig" href="https://www.instagram.com/querbrilhar" target="_blank">@querbrilhar</a>
-        <a class="ig" href="https://www.instagram.com/querbrilhar_oficial/" target="_blank">@querbrilhar_oficial</a>
-      </div>
-    </div>
     <div class="hero-content">
       <h1>Toda colherada<br>esconde um <b>brilho</b><br>que é só seu</h1>
       <p class="lead">Peças em aço inoxidável, folheadas a ouro e a prata, sorteadas com carinho e entregues num saquinho surpresa. Você escolhe as peças e a quantidade, e a sorte cuida do resto.</p>
@@ -379,7 +390,7 @@
 
 <footer>
   <div class="wrap">
-    <div>© 2026 Quer Brilhar · Paulista/PE · <a href="https://www.instagram.com/querbrilhar" target="_blank">@querbrilhar</a></div>
+    <div>© 2026 Quer Brilhar · Bolsas, Acessórios e Semijoias · Paulista/PE</div>
   </div>
 </footer>
 
