@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scoop Quer Brilhar · Monte o seu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bege: #c3a587;
+    --bege-claro: #f4ede4;
+    --bege-mais-claro: #faf6f0;
+    --preto: #221d18;
+    --branco: #ffffff;
+    --dourado: #a8814f;
+    --linha: rgba(34,29,24,0.12);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Poppins',sans-serif;color:var(--preto);background:var(--bege-mais-claro);overflow-x:hidden;}
+  h1,h2,h3,.serif{font-family:'Fraunces',serif;font-weight:500;}
+  a{text-decoration:none;color:inherit;}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 24px;}
+  .eyebrow{font-size:12px;letter-spacing:0.22em;text-transform:uppercase;font-weight:600;color:var(--dourado);}
+  button{font-family:'Poppins',sans-serif;cursor:pointer;}
+
+  .hero{background:var(--preto);color:var(--branco);position:relative;padding:56px 0 84px;overflow:hidden;text-align:center;}
+  .hero::before{content:"";position:absolute;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle, rgba(195,165,135,0.2), transparent 70%);top:-280px;left:50%;transform:translateX(-50%);}
+  .nav{display:flex;justify-content:space-between;align-items:center;padding-bottom:44px;position:relative;z-index:2;flex-wrap:wrap;gap:12px;}
+  .brand{font-family:'Fraunces',serif;font-size:19px;}
+  .brand b{font-weight:600;}
+  .nav a.ig{font-size:13px;font-weight:500;border:1px solid rgba(255,255,255,0.5);padding:7px 15px;border-radius:100px;}
+  .hero-content{position:relative;z-index:2;max-width:660px;margin:0 auto;}
+  .launch-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(195,165,135,0.18);border:1px solid rgba(195,165,135,0.4);padding:8px 18px;border-radius:100px;font-size:12.5px;font-weight:500;color:var(--bege);margin-bottom:22px;}
+  .launch-pill .dot{width:6px;height:6px;border-radius:50%;background:var(--bege);animation:pulse 1.6s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
+  .hero h1{font-size:clamp(36px,5.6vw,58px);font-style:italic;line-height:1.08;margin-bottom:18px;}
+  .hero h1 b{font-weight:600;color:var(--bege);font-style:normal;}
+  .hero p.lead{font-size:16px;line-height:1.7;color:rgba(255,255,255,0.82);max-width:500px;margin:0 auto 30px;}
+  .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+  .btn-primary{background:var(--bege);color:var(--preto);padding:16px 32px;border-radius:100px;font-size:14.5px;font-weight:600;display:inline-flex;align-items:center;gap:10px;box-shadow:0 10px 24px rgba(0,0,0,0.3);border:none;transition:transform .25s ease;}
+  .btn-primary:hover{transform:translateY(-2px);}
+  .btn-primary:disabled{opacity:.45;cursor:not-allowed;transform:none;}
+  .btn-ghost{color:var(--branco);border-bottom:1px solid rgba(255,255,255,0.5);padding:14px 4px;font-size:14px;font-weight:500;}
+  .freight-strip{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;margin-top:38px;font-size:12px;color:rgba(255,255,255,0.7);}
+  .freight-strip span b{color:var(--bege);}
+
+  section{padding:76px 0;}
+  .sec-head{max-width:580px;margin:0 auto 44px;text-align:center;}
+  .sec-head h2{font-size:clamp(26px,3.4vw,36px);line-height:1.15;margin-top:10px;}
+  .sec-head h2 i{color:var(--dourado);font-style:italic;}
+  .sec-head p{margin-top:14px;color:#5c5147;font-size:15px;line-height:1.6;}
+
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+  .step{background:var(--branco);border:1px solid var(--linha);border-radius:20px;padding:26px 20px;}
+  .step .num{width:34px;height:34px;border-radius:50%;background:var(--bege);color:var(--branco);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:600;margin-bottom:16px;}
+  .step h3{font-size:16px;margin-bottom:8px;}
+  .step p{font-size:13px;color:#5c5147;line-height:1.55;}
+  .mini-table{margin-top:12px;border-top:1px solid var(--linha);padding-top:10px;}
+  .mini-table div{display:flex;justify-content:space-between;font-size:12px;padding:4px 0;color:#5c5147;}
+  .mini-table div b{color:var(--preto);font-family:'Fraunces',serif;}
+
+  .shop{display:grid;grid-template-columns:1.2fr 0.9fr;gap:26px;align-items:start;}
+  .shop-panel{background:var(--branco);border:1px solid var(--linha);border-radius:24px;padding:34px;}
+  .shop-panel h3{font-size:14px;text-transform:uppercase;letter-spacing:.08em;color:var(--dourado);margin-bottom:16px;font-family:'Poppins',sans-serif;font-weight:600;}
+  .variant-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:34px;}
+  .variant-card{border:2px solid var(--linha);border-radius:16px;padding:14px;text-align:center;transition:all .2s ease;background:none;width:100%;font-family:'Poppins',sans-serif;}
+  .variant-card .swatch{width:100%;height:64px;border-radius:12px;margin-bottom:10px;}
+  .variant-card.dourado .swatch{background:linear-gradient(135deg,#f3d9a4,#b8860b);}
+  .variant-card.prata .swatch{background:linear-gradient(135deg,#eef1f4,#9aa4ae);}
+  .variant-card.misto .swatch{background:linear-gradient(135deg,#f3d9a4,#b8860b 50%,#c7cdd4 50%,#eef1f4);}
+  .variant-card span{font-size:13px;font-weight:500;}
+  .variant-card.selected{border-color:var(--bege);background:var(--bege-claro);}
+
+  .qty-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:8px;}
+  .qty-card{border:2px solid var(--linha);border-radius:14px;padding:16px 8px;text-align:center;background:none;font-family:'Poppins',sans-serif;transition:all .2s ease;}
+  .qty-card.selected{border-color:var(--bege);background:var(--bege-claro);}
+  .qty-card .n{font-family:'Fraunces',serif;font-size:22px;font-style:italic;}
+  .qty-card .label{font-size:11px;color:#8a7c6c;margin-top:2px;}
+  .qty-card .price{font-size:13px;font-weight:600;margin-top:8px;}
+
+  .pay-card{border:2px solid var(--linha);border-radius:14px;padding:16px 8px;text-align:center;background:none;font-family:'Poppins',sans-serif;font-size:13px;font-weight:500;transition:all .2s ease;}
+  .pay-card.selected{border-color:var(--bege);background:var(--bege-claro);}
+
+  .region-select{width:100%;padding:14px 16px;border-radius:12px;border:1px solid var(--linha);font-family:'Poppins',sans-serif;font-size:14px;background:var(--bege-claro);margin-top:6px;}
+
+  .cart{background:var(--preto);color:var(--branco);border-radius:24px;padding:32px;position:sticky;top:24px;}
+  .cart h3{font-size:14px;text-transform:uppercase;letter-spacing:.08em;color:var(--bege);margin-bottom:20px;}
+  .cart-row{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.1);font-size:14px;}
+  .cart-row.total{border-bottom:none;padding-top:16px;font-size:17px;}
+  .cart-row.total span:last-child{font-family:'Fraunces',serif;font-style:italic;color:var(--bege);}
+  .cart-note{font-size:12px;color:rgba(255,255,255,0.55);margin:14px 0 22px;line-height:1.6;}
+  .cart .btn-primary{width:100%;justify-content:center;}
+  .badge-min{display:inline-block;background:#f4ede4;color:var(--dourado);font-size:11.5px;padding:5px 12px;border-radius:100px;margin-top:6px;}
+
+  .mini-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;text-align:center;}
+  .mini-card{padding:8px;}
+  .mini-card .ic{width:48px;height:48px;border-radius:50%;background:var(--bege-claro);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;}
+  .mini-card h4{font-size:15px;margin-bottom:6px;}
+  .mini-card p{font-size:13px;color:#5c5147;line-height:1.5;}
+
+  .waitlist{background:var(--bege);color:var(--branco);border-radius:28px;padding:56px 8%;text-align:center;}
+  .waitlist h2{font-size:clamp(26px,3.4vw,34px);margin-bottom:12px;}
+  .waitlist p{font-size:14.5px;color:rgba(255,255,255,0.88);max-width:480px;margin:0 auto 30px;line-height:1.6;}
+  .form{max-width:420px;margin:0 auto;display:flex;flex-direction:column;gap:12px;}
+  .form input{padding:15px 18px;border-radius:100px;border:none;font-family:'Poppins',sans-serif;font-size:14px;outline:none;}
+  .form button{background:var(--preto);color:var(--branco);padding:15px 18px;border-radius:100px;border:none;font-family:'Poppins',sans-serif;font-weight:600;font-size:14.5px;transition:transform .2s ease;}
+  .form button:hover{transform:translateY(-2px);}
+  .form .note{font-size:11.5px;color:rgba(255,255,255,0.7);margin-top:4px;}
+
+  footer{background:var(--preto);color:rgba(255,255,255,0.55);padding:30px 0;font-size:12px;text-align:center;}
+  footer a{color:var(--branco);font-weight:500;}
+
+  @media (max-width:860px){
+    .steps{grid-template-columns:1fr 1fr;}
+    .shop{grid-template-columns:1fr;}
+    .cart{position:static;}
+    .variant-grid{grid-template-columns:1fr;}
+    .qty-grid{grid-template-columns:1fr 1fr;}
+    .mini-grid{grid-template-columns:1fr;}
+    section{padding:52px 0;}
+    .waitlist{padding:40px 6%;border-radius:20px;margin:0 12px;}
+    .freight-strip{flex-direction:column;gap:6px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="nav">
+      <div class="brand"><b>quer</b> brilhar ✦</div>
+      <div style="display:flex;gap:10px;align-items:center;">
+        <a class="ig" href="https://www.instagram.com/querbrilhar" target="_blank">@querbrilhar</a>
+        <a class="ig" href="https://www.instagram.com/querbrilhar_oficial/" target="_blank">@querbrilhar_oficial</a>
+      </div>
+    </div>
+    <div class="hero-content">
+      <h1>Toda colherada<br>esconde um <b>brilho</b><br>que é só seu</h1>
+      <p class="lead">Peças em aço inoxidável, folheadas a ouro e a prata, sorteadas com carinho e entregues num saquinho surpresa. Você escolhe as peças e a quantidade, e a sorte cuida do resto.</p>
+      <div class="cta-row">
+        <a class="btn-primary" href="#montar">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 14.3 9.3 22 12l-7.7 2.7L12 22l-2.3-7.3L2 12l7.7-2.7L12 2Z"/></svg>
+          Montar meu Scoop
+        </a>
+        <a class="btn-ghost" href="#como-funciona">Ver como funciona ↓</a>
+      </div>
+      <div class="freight-strip">
+        <span>Entrega Paulista: <b>R$ 10</b></span>
+        <span>Olinda, Abreu e Lima e Igarassu: <b>R$ 15</b></span>
+        <span>Parcelamento: <b>até 3x sem juros</b></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="como-funciona">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Simples, viciante e cheio de brilho</div>
+      <h2>Como funciona o <i>Scoop</i></h2>
+      <p>Cada saquinho é uma pequena aposta que sempre compensa: peças de verdade escondidas, prontas pra virar sua próxima favorita.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <h3>Escolha seu combo</h3>
+        <p>Folheado a ouro, folheado a prata ou um mix dos dois, e quantos scoops quiser levar pra casa.</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h3>A sorte trabalha por você</h3>
+        <p>Cada saquinho é sorteado na hora. Ninguém sabe qual peça vem até você abrir.</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h3>Mínimo garantido</h3>
+        <p>Quanto mais scoops, mais peças garantidas. Nunca menos que isso:</p>
+        <div class="mini-table">
+          <div><span>1 scoop</span><b>3 peças</b></div>
+          <div><span>2 scoops</span><b>6 peças</b></div>
+          <div><span>3 scoops</span><b>9 peças</b></div>
+          <div><span>4 scoops</span><b>12 peças</b></div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num">4</div>
+        <h3>Miçanga extra = bônus</h3>
+        <p>Alguns saquinhos escondem uma miçanga a mais, que libera mais um saquinho surpresa na hora.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="montar">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Sua vez de brilhar</div>
+      <h2>Monte o seu <i>Scoop</i></h2>
+      <p>A experiência de compra mais divertida que você vai ter! Preencha os passos abaixo e finalize.</p>
+    </div>
+
+    <div class="shop">
+      <div class="shop-panel">
+        <h3>1. Seu nome *</h3>
+        <input class="region-select" id="nameInput" type="text" placeholder="Como podemos te chamar?" style="margin-bottom:24px;" required>
+
+        <h3>2. Escolha as peças</h3>
+        <p style="font-size:12.5px;color:#8a7c6c;margin:-8px 0 14px;line-height:1.5;">Escolha o banho que você gosta: Dourado, Prata ou Misto. Peças em aço inoxidável, folheadas a ouro ou a prata.</p>
+        <div class="variant-grid" id="variantGrid">
+          <button class="variant-card dourado selected" data-variant="Folheado a Ouro">
+            <div class="swatch"></div>
+            <span>Dourado</span>
+          </button>
+          <button class="variant-card prata" data-variant="Folheado a Prata">
+            <div class="swatch"></div>
+            <span>Prata</span>
+          </button>
+          <button class="variant-card misto" data-variant="Mix Ouro e Prata">
+            <div class="swatch"></div>
+            <span>Misto</span>
+          </button>
+        </div>
+        <div style="background:var(--bege-claro);border-radius:14px;padding:14px 18px;margin-bottom:14px;">
+          <div style="font-size:12px;font-weight:600;color:var(--dourado);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;">O que pode sair no seu scoop</div>
+          <p style="font-size:13px;color:#5c5147;line-height:1.6;">Brinco, anel, colar, pulseira ou bracelete, sorteados na hora. Cada saquinho é uma surpresa dessas peças.</p>
+        </div>
+        <div style="background:var(--bege-claro);border-radius:14px;padding:14px 18px;margin-bottom:14px;">
+          <div style="font-size:12px;font-weight:600;color:var(--dourado);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;">Características</div>
+          <ul style="font-size:13px;color:#5c5147;line-height:1.7;padding-left:18px;margin:0;">
+            <li><strong>Material:</strong> aço inoxidável, folheado a ouro ou a prata</li>
+            <li>Peças hipoalergênicas, ideais pra pele sensível</li>
+            <li>Produtos 100% novos, embalados individualmente</li>
+          </ul>
+        </div>
+        <div style="margin-bottom:24px;">
+          <label for="ringSizeInput" style="font-size:12.5px;color:#8a7c6c;display:block;margin-bottom:6px;">Caso saia um anel no seu scoop, informe seu tamanho preferido: *</label>
+          <input class="region-select" id="ringSizeInput" type="text" placeholder="Ex: 16, 18, 20 (aro brasileiro)" required>
+        </div>
+
+        <h3>3. Quer registrar seu Scoop?</h3>
+        <p style="font-size:12.5px;color:#8a7c6c;margin:-8px 0 14px;line-height:1.5;">Vamos gravar todo o procedimento do seu scoop, desde a apresentação do seu nome até o final, mostrando tudo o que você tirou.</p>
+        <div class="variant-grid" id="videoGrid" style="grid-template-columns:1fr 1fr;margin-bottom:10px;">
+          <button class="pay-card selected" data-video="Com vídeo">
+            <span>Com vídeo</span>
+            <div style="font-size:11px;color:#8a7c6c;margin-top:4px;">@querbrilhar_oficial em colab com @querbrilhar</div>
+          </button>
+          <button class="pay-card" data-video="Sem vídeo">
+            <span>Sem vídeo</span>
+            <div style="font-size:11px;color:#8a7c6c;margin-top:4px;">Quero apenas no privado</div>
+          </button>
+        </div>
+        <p style="font-size:12px;color:#8a7c6c;margin:0 0 8px;line-height:1.5;">Quer ver a abertura do seu pedido? Selecione a opção "Com Vídeo" na compra.</p>
+        <div style="background:rgba(181,69,63,0.1);border:1px solid rgba(181,69,63,0.3);border-radius:12px;padding:12px 16px;margin-bottom:24px;">
+          <p style="font-size:12.5px;color:#8a3f38;line-height:1.5;"><strong>Atenção:</strong> prazo de até 2 dias úteis para gravar, editar e postar os vídeos.</p>
+        </div>
+
+        <h3>4. Escolha a quantidade</h3>
+        <div class="qty-grid" id="qtyGrid">
+          <button class="qty-card selected" data-qty="1" data-price="109">
+            <div class="n">1</div>
+            <div class="label">scoop</div>
+            <div class="price">R$ 109</div>
+          </button>
+          <button class="qty-card" data-qty="2" data-price="199">
+            <div class="n">2</div>
+            <div class="label">scoops</div>
+            <div class="price">R$ 199</div>
+          </button>
+          <button class="qty-card" data-qty="3" data-price="275">
+            <div class="n">3</div>
+            <div class="label">scoops</div>
+            <div class="price">R$ 275</div>
+          </button>
+          <button class="qty-card" data-qty="4" data-price="339">
+            <div class="n">4</div>
+            <div class="label">scoops</div>
+            <div class="price">R$ 339</div>
+          </button>
+        </div>
+        <div class="badge-min" id="minBadge">Você leva no mínimo 3 peças</div>
+
+        <h3 style="margin-top:30px;">5. Calcule o frete pelo CEP</h3>
+        <div style="display:flex;gap:10px;align-items:center;">
+          <input class="region-select" id="cepInput" type="text" inputmode="numeric" maxlength="9" placeholder="Digite seu CEP (ex: 53400-000)" style="margin-top:0;">
+          <button type="button" id="calcularFreteBtn" style="white-space:nowrap;background:var(--preto);color:var(--branco);border:none;padding:14px 20px;border-radius:12px;font-family:'Poppins',sans-serif;font-size:13px;font-weight:600;">Calcular</button>
+        </div>
+        <a href="https://buscacepinter.correios.com.br/app/endereco/index.php" target="_blank" style="display:inline-block;font-size:12px;color:var(--dourado);margin-top:8px;text-decoration:underline;">Não sei meu CEP</a>
+        <div id="cepResult" style="font-size:12.5px;color:#8a7c6c;margin-top:8px;line-height:1.5;">Entregamos em Paulista, Olinda, Abreu e Lima e Igarassu.</div>
+        <div style="margin-top:16px;margin-bottom:24px;">
+          <label for="enderecoInput" style="font-size:12.5px;color:#8a7c6c;display:block;margin-bottom:6px;">Endereço completo (rua, número, bairro e complemento) *</label>
+          <input class="region-select" id="enderecoInput" type="text" style="margin-top:0;" placeholder="Ex: Rua das Flores, 123, Bairro, apto 45" required>
+        </div>
+
+        <h3 style="margin-top:30px;">6. Forma de pagamento</h3>
+        <div class="variant-grid" id="paymentGrid" style="grid-template-columns:repeat(3,1fr);">
+          <button class="pay-card selected" data-payment="Pix">
+            <span>Pix</span>
+          </button>
+          <button class="pay-card" data-payment="Cartão de crédito">
+            <span>Crédito</span>
+          </button>
+          <button class="pay-card" data-payment="Cartão de débito">
+            <span>Débito</span>
+          </button>
+        </div>
+        <div id="installmentBlock" style="display:none;margin-top:14px;">
+          <label for="installmentSelect" style="font-size:12.5px;color:#8a7c6c;display:block;margin-bottom:6px;">Em quantas vezes deseja parcelar?</label>
+          <select class="region-select" id="installmentSelect">
+            <option value="1">1x sem juros</option>
+            <option value="2">2x sem juros</option>
+            <option value="3" selected>3x sem juros</option>
+            <option value="mais">Dividir em mais vezes mesmo com juros (parcelas a combinar)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="cart">
+        <h3>Seu pedido</h3>
+        <div class="cart-row"><span id="cartVariant">Dourado</span><span id="cartQty">1 scoop</span></div>
+        <div class="cart-row"><span>Subtotal</span><span id="cartSubtotal">R$ 109,00</span></div>
+        <div class="cart-row"><span>Frete</span><span id="cartFreight">R$ 10,00</span></div>
+        <div class="cart-row"><span>Pagamento</span><span id="cartPayment">Pix</span></div>
+        <div class="cart-row total"><span>Total</span><span id="cartTotal">R$ 119,00</span></div>
+        <div class="cart-note" id="cartInstallments">À vista no Pix. Depois de finalizar, você recebe o link de pagamento direto no seu WhatsApp.</div>
+        <div id="pendingFields" style="font-size:11.5px;color:#e0a95f;margin-bottom:10px;display:none;"></div>
+        <button class="btn-primary" id="checkoutBtn">Finalizar Pedido</button>
+        <div id="successMsg" style="display:none;margin-top:14px;padding:14px 16px;border-radius:14px;background:rgba(195,165,135,0.18);border:1px solid rgba(195,165,135,0.4);text-align:center;">
+          <div style="font-size:20px;margin-bottom:4px;">✓</div>
+          <div style="font-size:12.5px;color:var(--bege);line-height:1.5;">Pedido enviado! Você foi redirecionada pro WhatsApp da Quer Brilhar para confirmar.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Por que vale a pena</div>
+      <h2>Cada scoop é uma <i>experiência</i></h2>
+    </div>
+    <div class="mini-grid">
+      <div class="mini-card">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#a8814f" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M12 12 8.5 21h7L12 12Z"/></svg></div>
+        <h4>Semijoias de verdade</h4>
+        <p>Peças 100% folheadas, selecionadas com carinho pra durar e brilhar de verdade.</p>
+      </div>
+      <div class="mini-card">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#a8814f" stroke-width="1.5"><path d="M20 7 12 3 4 7v10l8 4 8-4V7Z"/></svg></div>
+        <h4>Sorte garantida, nunca vazia</h4>
+        <p>Todo scoop sai com peças de verdade. A única dúvida é qual sorte vem na sua.</p>
+      </div>
+      <div class="mini-card">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#a8814f" stroke-width="1.5"><path d="M12 2 14.3 9.3 22 12l-7.7 2.7L12 22l-2.3-7.3L2 12l7.7-2.7L12 2Z"/></svg></div>
+        <h4>Só 5 vagas com brinde</h4>
+        <p>As 5 primeiras clientes da leva de lançamento ganham uma necessaire. Depois volta ao preço cheio, sem brinde.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="lista">
+  <div class="wrap">
+    <div class="waitlist">
+      <h2>As 5 vagas esgotaram?</h2>
+      <p>As 5 primeiras clientes já garantem o scoop com necessaire de brinde. Se essas vagas acabarem antes de você, deixa seu nome aqui que você entra na fila e é chamada assim que abrir a próxima leva.</p>
+      <form class="form" id="waitlistForm">
+        <input type="text" id="nomeInput" placeholder="Seu nome" required>
+        <input type="tel" id="whatsInput" placeholder="Seu WhatsApp (com DDD)" required>
+        <button type="submit">Entrar na fila de espera ✦</button>
+        <div class="note">Ao entrar, você será redirecionada pro WhatsApp da Quer Brilhar para confirmar seu lugar na fila.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 Quer Brilhar · Paulista/PE · <a href="https://www.instagram.com/querbrilhar" target="_blank">@querbrilhar</a></div>
+  </div>
+</footer>
+
+<script>
+  const prices = {1:109, 2:199, 3:275, 4:339};
+  const minPieces = {1:3, 2:6, 3:9, 4:12};
+  let state = {
+    nome: '',
+    variant: 'Dourado',
+    ringSize: '',
+    video: 'Com vídeo',
+    qty: 1,
+    freight: null,
+    freightLabel: null,
+    endereco: '',
+    payment: 'Pix',
+    installments: 3
+  };
+
+  const nameInput = document.getElementById('nameInput');
+  const ringSizeInput = document.getElementById('ringSizeInput');
+  const variantGrid = document.getElementById('variantGrid');
+  const videoGrid = document.getElementById('videoGrid');
+  const qtyGrid = document.getElementById('qtyGrid');
+  const cepInput = document.getElementById('cepInput');
+  const cepResult = document.getElementById('cepResult');
+  const enderecoInput = document.getElementById('enderecoInput');
+  const paymentGrid = document.getElementById('paymentGrid');
+  const installmentBlock = document.getElementById('installmentBlock');
+  const installmentSelect = document.getElementById('installmentSelect');
+  const checkoutBtn = document.getElementById('checkoutBtn');
+
+  nameInput.addEventListener('input', (e) => { state.nome = e.target.value; updateCart(); });
+  ringSizeInput.addEventListener('input', (e) => { state.ringSize = e.target.value; updateCart(); });
+  enderecoInput.addEventListener('input', (e) => { state.endereco = e.target.value; updateCart(); });
+
+  variantGrid.addEventListener('click', (e) => {
+    const card = e.target.closest('.variant-card');
+    if(!card) return;
+    variantGrid.querySelectorAll('.variant-card').forEach(c => c.classList.remove('selected'));
+    card.classList.add('selected');
+    state.variant = card.dataset.variant;
+    updateCart();
+  });
+
+  videoGrid.addEventListener('click', (e) => {
+    const card = e.target.closest('.pay-card');
+    if(!card) return;
+    videoGrid.querySelectorAll('.pay-card').forEach(c => c.classList.remove('selected'));
+    card.classList.add('selected');
+    state.video = card.dataset.video;
+  });
+
+  qtyGrid.addEventListener('click', (e) => {
+    const card = e.target.closest('.qty-card');
+    if(!card) return;
+    qtyGrid.querySelectorAll('.qty-card').forEach(c => c.classList.remove('selected'));
+    card.classList.add('selected');
+    state.qty = parseInt(card.dataset.qty);
+    updateCart();
+  });
+
+  paymentGrid.addEventListener('click', (e) => {
+    const card = e.target.closest('.pay-card');
+    if(!card) return;
+    paymentGrid.querySelectorAll('.pay-card').forEach(c => c.classList.remove('selected'));
+    card.classList.add('selected');
+    state.payment = card.dataset.payment;
+    installmentBlock.style.display = state.payment === 'Cartão de crédito' ? 'block' : 'none';
+    updateCart();
+  });
+
+  installmentSelect.addEventListener('change', (e) => {
+    state.installments = e.target.value;
+    updateCart();
+  });
+
+  function calcularFrete(cepDigits){
+    const prefixo = parseInt(cepDigits.substring(0,5));
+    if(prefixo >= 53000 && prefixo <= 53399) return {valor: 15, cidade: 'Olinda'};
+    if(prefixo >= 53400 && prefixo <= 53499) return {valor: 10, cidade: 'Paulista'};
+    if(prefixo >= 53500 && prefixo <= 53599) return {valor: 15, cidade: 'Abreu e Lima'};
+    if(prefixo >= 53600 && prefixo <= 53689) return {valor: 15, cidade: 'Igarassu'};
+    return null;
+  }
+
+  function processarCep(){
+    let v = cepInput.value.replace(/\D/g, '').slice(0,8);
+    cepInput.value = v.length > 5 ? v.slice(0,5) + '-' + v.slice(5) : v;
+
+    if(v.length < 8){
+      state.freight = null;
+      state.freightLabel = null;
+      cepResult.textContent = 'Digite um CEP completo pra calcular. Entregamos em Paulista, Olinda, Abreu e Lima e Igarassu.';
+      cepResult.style.color = '#8a7c6c';
+      updateCart();
+      return;
+    }
+
+    const resultado = calcularFrete(v);
+    if(resultado){
+      state.freight = resultado.valor;
+      state.freightLabel = resultado.cidade;
+      cepResult.textContent = `Entrega em ${resultado.cidade}: frete de ${brl(resultado.valor)}.`;
+      cepResult.style.color = '#a8814f';
+    } else {
+      state.freight = null;
+      state.freightLabel = null;
+      cepResult.textContent = 'Ainda não entregamos nessa região. Chama no WhatsApp que a gente vê uma solução.';
+      cepResult.style.color = '#b5453f';
+    }
+    updateCart();
+  }
+
+  cepInput.addEventListener('input', processarCep);
+  document.getElementById('calcularFreteBtn').addEventListener('click', processarCep);
+
+  function brl(v){
+    return 'R$ ' + v.toFixed(2).replace('.', ',');
+  }
+
+  function updateCart(){
+    const subtotal = prices[state.qty];
+    const freight = state.freight;
+    const total = freight !== null ? subtotal + freight : subtotal;
+
+    document.getElementById('cartVariant').textContent = state.variant;
+    document.getElementById('cartQty').textContent = state.qty + (state.qty > 1 ? ' scoops' : ' scoop');
+    document.getElementById('cartSubtotal').textContent = brl(subtotal);
+    document.getElementById('cartFreight').textContent = freight !== null ? brl(freight) : 'informe o CEP';
+    document.getElementById('cartPayment').textContent = state.payment;
+    document.getElementById('cartTotal').textContent = brl(total);
+    document.getElementById('minBadge').textContent = `Você leva no mínimo ${minPieces[state.qty]} peças`;
+
+    let nota = '';
+    if(state.payment === 'Pix'){
+      nota = `1x de ${brl(total)} à vista no Pix.`;
+    } else if(state.payment === 'Cartão de crédito'){
+      if(state.installments === 'mais'){
+        nota = 'Parcelamento em mais vezes com juros do cartão, valor a combinar direto com a gente.';
+      } else {
+        const n = parseInt(state.installments);
+        const parcela = total / n;
+        nota = `${n}x de ${brl(parcela)} sem juros no cartão de crédito.`;
+      }
+    } else {
+      nota = `1x de ${brl(total)} à vista no cartão de débito.`;
+    }
+    nota += ' Depois de finalizar, você recebe o link de pagamento direto no seu WhatsApp.';
+    document.getElementById('cartInstallments').textContent = nota;
+
+    const pendentes = [];
+    if(!state.nome.trim()) pendentes.push('nome');
+    if(!state.ringSize.trim()) pendentes.push('tamanho do anel');
+    if(!state.endereco.trim()) pendentes.push('endereço');
+    if(freight === null) pendentes.push('CEP');
+
+    const pendingFields = document.getElementById('pendingFields');
+    if(pendentes.length > 0){
+      pendingFields.style.display = 'block';
+      pendingFields.textContent = `Falta preencher: ${pendentes.join(', ')}.`;
+    } else {
+      pendingFields.style.display = 'none';
+    }
+
+    checkoutBtn.disabled = pendentes.length > 0;
+  }
+
+  checkoutBtn.addEventListener('click', () => {
+    if(state.freight === null) return;
+    const subtotal = prices[state.qty];
+    const total = subtotal + state.freight;
+    const pagamentoTexto = state.payment === 'Cartão de crédito'
+      ? (state.installments === 'mais' ? `${state.payment} (parcelas a combinar, com juros)` : `${state.payment} (${state.installments}x sem juros)`)
+      : state.payment;
+    const nomeTexto = state.nome ? state.nome : 'não informado';
+    const anelTexto = state.ringSize ? state.ringSize : 'não informado';
+    const enderecoTexto = state.endereco ? state.endereco : 'não informado';
+    const msg = `Oi! Quero finalizar meu pedido do Scoop Quer Brilhar\n\nNome: ${nomeTexto}\nPeças: ${state.variant}\nTamanho do anel (se sair): ${anelTexto}\nRegistro em vídeo: ${state.video}\nQuantidade: ${state.qty} scoop(s), mínimo de ${minPieces[state.qty]} peças\nCidade de entrega: ${state.freightLabel} (frete ${brl(state.freight)})\nEndereço: ${enderecoTexto}\nForma de pagamento: ${pagamentoTexto}\nTotal: ${brl(total)}`;
+    const url = `https://wa.me/5581920036867?text=${encodeURIComponent(msg)}`;
+    window.open(url, '_blank');
+
+    document.getElementById('successMsg').style.display = 'block';
+    setTimeout(() => {
+      document.getElementById('successMsg').style.display = 'none';
+    }, 6000);
+  });
+
+  document.getElementById('waitlistForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const nome = document.getElementById('nomeInput').value.trim();
+    const whats = document.getElementById('whatsInput').value.trim();
+    const msg = `Oi! Sou ${nome} e quero entrar na fila de espera do Scoop da Quer Brilhar, caso as 5 vagas de lançamento já tenham esgotado. Meu WhatsApp: ${whats}`;
+    const url = `https://wa.me/5581920036867?text=${encodeURIComponent(msg)}`;
+    window.open(url, '_blank');
+  });
+
+  updateCart();
+</script>
+
+</body>
+</html>
