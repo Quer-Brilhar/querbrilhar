@@ -162,8 +162,8 @@
         <a class="btn-ghost" href="#como-funciona">Ver como funciona ↓</a>
       </div>
       <div class="freight-strip">
-        <span>Entrega Paulista: <b>R$ 10</b></span>
-        <span>Olinda, Abreu e Lima e Igarassu: <b>R$ 15</b></span>
+        <span>Entrega por <b>todo o Brasil</b> via Correios</span>
+        <span>Frete calculado pelo <b>CEP</b></span>
         <span>Parcelamento: <b>até 3x sem juros</b></span>
       </div>
     </div>
@@ -519,11 +519,26 @@
 
   function calcularFrete(cepDigits){
     const prefixo = parseInt(cepDigits.substring(0,5));
-    if(prefixo >= 53000 && prefixo <= 53399) return {valor: 15, cidade: 'Olinda'};
-    if(prefixo >= 53400 && prefixo <= 53499) return {valor: 10, cidade: 'Paulista'};
-    if(prefixo >= 53500 && prefixo <= 53599) return {valor: 15, cidade: 'Abreu e Lima'};
-    if(prefixo >= 53600 && prefixo <= 53689) return {valor: 15, cidade: 'Igarassu'};
-    return null;
+    const uf = cepDigits.substring(0,2);
+
+    if(prefixo >= 53400 && prefixo <= 53499) return {valor: 10, cidade: 'Paulista/PE'};
+    if(prefixo >= 53000 && prefixo <= 53399) return {valor: 15, cidade: 'Olinda/PE'};
+    if(prefixo >= 53500 && prefixo <= 53599) return {valor: 15, cidade: 'Abreu e Lima/PE'};
+    if(prefixo >= 53600 && prefixo <= 53689) return {valor: 15, cidade: 'Igarassu/PE'};
+    if(uf === '50' || uf === '51' || uf === '52' || uf === '53' || uf === '54' || uf === '55' || uf === '56') return {valor: 18, cidade: 'Interior de PE'};
+    if(uf === '57' || uf === '58' || uf === '59' || uf === '48' || uf === '49' || uf === '40' || uf === '41' || uf === '42' || uf === '43' || uf === '44' || uf === '45' || uf === '46' || uf === '47' || uf === '63' || uf === '64') return {valor: 22, cidade: 'Nordeste'};
+    if(uf === '60' || uf === '61' || uf === '62' || uf === '65' || uf === '66' || uf === '67' || uf === '68' || uf === '69' || uf === '77' || uf === '76' || uf === '64') return {valor: 28, cidade: 'Norte/Centro-Oeste'};
+    if(uf === '01' || uf === '02' || uf === '03' || uf === '04' || uf === '05' || uf === '06' || uf === '07' || uf === '08' || uf === '09' || uf === '10' || uf === '11' || uf === '12' || uf === '13' || uf === '14' || uf === '15' || uf === '16' || uf === '17' || uf === '18' || uf === '19') return {valor: 25, cidade: 'São Paulo/SP'};
+    if(uf === '20' || uf === '21' || uf === '22' || uf === '23' || uf === '24' || uf === '25' || uf === '26' || uf === '27' || uf === '28') return {valor: 25, cidade: 'Rio de Janeiro/RJ'};
+    if(uf === '29') return {valor: 25, cidade: 'Espírito Santo/ES'};
+    if(uf === '30' || uf === '31' || uf === '32' || uf === '33' || uf === '34' || uf === '35' || uf === '36' || uf === '37' || uf === '38' || uf === '39') return {valor: 25, cidade: 'Minas Gerais/MG'};
+    if(uf === '80' || uf === '81' || uf === '82' || uf === '83' || uf === '84' || uf === '85' || uf === '86' || uf === '87') return {valor: 28, cidade: 'Paraná/PR'};
+    if(uf === '88' || uf === '89') return {valor: 28, cidade: 'Santa Catarina/SC'};
+    if(uf === '90' || uf === '91' || uf === '92' || uf === '93' || uf === '94' || uf === '95' || uf === '96' || uf === '97' || uf === '98' || uf === '99') return {valor: 28, cidade: 'Rio Grande do Sul/RS'};
+    if(uf === '70' || uf === '71' || uf === '72' || uf === '73' || uf === '74' || uf === '75' || uf === '76' || uf === '78' || uf === '79') return {valor: 26, cidade: 'Centro-Oeste'};
+    if(uf === '64' || uf === '65' || uf ===('66') || uf === '67' || uf === '68' || uf === '69' || uf === '77') return {valor: 30, cidade: 'Norte'};
+
+    return {valor: 28, cidade: 'Brasil'};
   }
 
   function processarCep(){
@@ -533,7 +548,7 @@
     if(v.length < 8){
       state.freight = null;
       state.freightLabel = null;
-      cepResult.textContent = 'Digite um CEP completo pra calcular. Entregamos em Paulista, Olinda, Abreu e Lima e Igarassu.';
+      cepResult.textContent = 'Digite um CEP completo pra calcular o frete.';
       cepResult.style.color = '#8a7c6c';
       updateCart();
       return;
@@ -548,7 +563,7 @@
     } else {
       state.freight = null;
       state.freightLabel = null;
-      cepResult.textContent = 'Ainda não entregamos nessa região. Chama no WhatsApp que a gente vê uma solução.';
+      cepResult.textContent = 'Não identificamos o CEP. Confira se está correto e tente novamente.';
       cepResult.style.color = '#b5453f';
     }
     updateCart();
